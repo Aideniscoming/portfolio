@@ -1,0 +1,294 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.15/build/spline-viewer.js"></script>
+
+        <style>
+            body {
+                overflow: auto;
+                background: linear-gradient(
+                to top,
+                rgba(173, 216, 230, 1),   /* Light blue at the bottom */
+                rgba(255, 255, 255, 1)    /* Almost white at the top */
+                );
+            }
+            #background{
+                position: absolute;
+                z-index: -1;
+            }
+            #about {
+                position: relative;
+                height: 100vh;
+                width: 100%;
+                overflow: hidden;
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;  
+            }
+            #about h1 {
+                position: relative;
+                z-index: 1;
+                font-size: 4rem;
+                font-weight: bold;
+                color: rgb(9, 81, 237);
+                margin-left: 20px;
+                font-family: "Times New Roman", Times, serif;
+                top: 50px;
+            }
+            #about h2{
+                position: relative;
+                z-index: 1;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: black;
+                margin-left: 20px;
+                top: 0px;
+                font-family: "Times New Roman", Times, serif;
+                color: rgb(9, 81, 237);
+            }
+            #about p{
+                padding: 10px;
+                position: relative;
+                z-index: 1;
+                max-width: 450px;
+                margin-left: 20px;
+                top: 75px;
+                line-height: 1.5;
+                font-family: "Times New Roman", Times, serif;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+            #about button{
+                z-index: 1;
+                width: 100px;
+                height: 75px;
+                border-radius: 20px;
+                position: relative;
+                top: 150px;
+                left: 200px;
+                background-color: rgb(104, 198, 241);
+                cursor: pointer;
+                transition: background-color 0.25s ease;
+                color: white;
+            }
+            #about button:hover{
+                background-color: rgb(9, 104, 247);
+            }
+            #about button:active {
+                background-color: rgb(6, 51, 141);
+            }
+       
+
+            .navbar {
+                z-index: 1; /* ensure it's above everything */
+                background-color: white;
+                padding: 20px;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end; /* <-- pushes nav items to the right */
+                align-items: center; /* vertically centers items */
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            #name{
+                position: absolute;
+                left: 30px;
+                top: 10px;
+                font-size: 2rem;
+            }
+            .nav-links a {
+                color: black;
+                text-decoration: none;
+                margin-left: 40px;
+                font-size: 1.4rem;
+                font-family: "Times New Roman", Times, serif;
+                transition: color 0.3s;
+                padding-right: 40px;
+
+            }
+            #info{
+                padding: 10px;
+                width: 450px;
+                z-index: 1;
+                position: relative;
+                top: 100px;
+                margin-left: 20px;
+                top: 100px;
+                line-height: 1.5;
+                font-family: "Times New Roman", Times, serif;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links a:hover {
+            color: #ffcc00;
+            }
+
+            #skills{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+                justify-content: center;
+                padding-top: 200px;
+                height: auto;
+            }
+
+            .header{
+                color: rgb(240, 87, 87);
+                font-family: "Times New Roman", Times, serif;
+                font-size: 4rem;
+            }
+            #pl, #pt, #ss, #sl{
+                font-size: 2rem;
+            }
+            #projects{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+                padding-top: 100px;
+                padding-bottom: 100px;
+            
+            }
+
+            .animate-on-scroll {
+                min-height: 80vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                max-width: 800px;
+                margin: auto;
+                opacity: 0;
+                transform: translateX(-300px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+
+            .animate-on-scroll.animate {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .ima {
+                width: 70vh;
+                height: 50vh;
+                margin-bottom: 1rem;
+            }
+            .description{
+                font-size: 1.5rem;;
+            }
+            .tools {
+                color:red;
+                font-size: 1.5rem;;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div id="name">My Portofolio</div>
+            <div class="nav-links">
+                <a href="#about">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+            </div>
+        </nav>
+        <section id="about">
+            <spline-viewer id="background"
+            url="https://prod.spline.design/G5YqiRxLwDAf8i6Y/scene.splinecode"
+            style="width: 100%; height: 100%;">
+            </spline-viewer>
+            <div class="section-content" id="about-content">
+                <h1>Hi, I'm Aiden Le!</h1>
+                <h2><i class="fa-solid fa-graduation-cap"></i>IT Student</h2>
+                <p>I am an enthusiastic IT student eager to apply my technical knowledge through practical, hands-on experience. I am actively seeking opportunities to work on real-world projects where I can develop my skills in programming, networking, and system management.</p>
+                <div id="info">Information:<br>
+                <label class="label"><i class="fa-solid fa-location-dot"></i>Location: Melbourne, Victoria</label><br>
+                <label class="label"><i class="fa-solid fa-envelope"></i>Work Email: aidenleworkgm@gmail.com</label><br>
+                <label class="label"><i class="fa-solid fa-phone"></i>Phone Number: 0481 151 828</label>
+            </div>
+
+            <a id="resumebtn" href="resume.pdf" target="_blank">
+                <button>View Resume</button>
+            </a>
+        </section>
+        <section id="skills">
+            <div class="animate-on-scroll">
+                <div class="header">Programming Languages</div>
+                <ul id="pl">
+                    <li><i class="fa-brands fa-python"></i> Python</li>
+                    <li><i class="fa-brands fa-js"></i>Javascript</li>
+                    <li><i class="fa-brands fa-html5"></i>Html</li>
+                    <li><i class="fa-brands fa-css3"></i></i>CSS</li>
+                </ul>
+            </div>
+            <div class="animate-on-scroll">
+                <div class="header">Programming Tools</div>
+                <ul id="pt">
+                    <li>Spline</li>
+                    <li>VSCode</li>
+                    <li><i class="fa-brands fa-github"></i>Github</li>
+                </ul>
+            </div>
+            <div class="animate-on-scroll">
+                <div class="header">Speaking Languages</div>
+                <ul id="sl">
+                    <li>Vietnamese</li>
+                    <li>English</li>
+                    <li>Chinese</li>
+                </ul>
+            </div>
+            <div class="animate-on-scroll">
+                <div class="header">Soft Skills</div>
+                <ul id="ss">
+                    <li>Time Management</li>
+                    <li>Teamwork</li>
+                    <li>Adaptability</li>
+                    <li>Communication</li>
+                </ul>
+            </div> 
+            
+        </section>
+        <section id="projects">
+            <div class="animate-on-scroll" >
+                <img class="ima" src ="pygame.png">
+                <p class="description">Game loop setup, image handling, user input, collision detection, object movement, and scoring. Key concepts including event handling, collision detection using colliderect(), object movement with Rect, timed events, and rendering UI elements</p>
+                <label class="tools">PYGAME</label>
+            </div>
+            <div class="animate-on-scroll">
+                <img class="ima"src ="cdpython.png">
+                <p class="description">GUI development, file system manipulation, and event-driven programming. It covers treeview hierarchy, file grouping by extension/date, image/text preview on hover, file operations (delete, move, open), and custom popups. It also handles real-time search, cross-platform compatibility, and drag-and-drop support—showcasing practical use of Python OOP and user-friendly design.</p>
+                <label class="tools">PYTHON GUI</label>
+            </div>
+            <div class="animate-on-scroll">
+                <img class="ima"src ="javascript.png">
+                <p class="description">DOM manipulation, event handling, and time tracking using setInterval. It converts milliseconds into hh:mm:ss, updates the display in real time, and uses clearInterval to pause/reset. CSS handles flex layout, hover effects, and text styling.</p>
+                <label class="tools">JAVASCRIPT, HTML, CSS</label>
+            </div>
+            <div class="animate-on-scroll">
+                <img class="ima"src ="website.png">
+                <p class="description">HTML structure, responsive CSS with Flexbox, animated transitions using keyframes, and JavaScript for interactive section animations and navigation. It also integrates a 3D Spline background and showcases responsive layout techniques.</p>
+                <label class="tools">JAVASCRIPT, HTML, CSS</label>
+            </div>
+        </section>
+        <script>   
+            const animation_ele = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    } else {
+                        entry.target.classList.remove('animate');
+                    }
+                })
+            }, { threshold: 0.5});
+            animation_ele.forEach((el) => observer.observe(el))
+        </script>
+    </body>
+    </html>
